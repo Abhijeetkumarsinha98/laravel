@@ -1,0 +1,134 @@
+.remove-padding{
+		padding: 0px!important;
+		text-align: center;
+	}
+	.remove-padding h4{
+		padding: 10px; 
+		color : #69BDFF; 
+		border-bottom: 1px solid #add8e6;
+	}
+	.remove-padding strong{
+		font-weight: 400; 
+		font-size: 16px;
+		 line-height: 1.4;
+	}
+	.remove-padding label
+	{
+		padding: 8px; 
+		color: #818a91;
+	}
+	.main-tab-image {
+    width: 100px;
+    height: 108px;
+    padding: 12px;
+}
+.light-gray-bkgd {
+    background-color: rgba(0,0,0,.01);
+    /*min-height: 110px;*/
+}
+
+.shadow-box {
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,.2);
+}
+.main-second-tab-image {
+    width: 50px;
+    height: 50px;
+}
+.main-tab-div1 {
+    display: inline-block;
+    width: 50%;
+    margin-right: 2%;
+    vertical-align: top;
+    text-align: center;
+}
+.main-tab-div2 {
+    display: inline-block;
+    width: 45%;
+    text-align: left;
+    padding: 10px 0px;
+    vertical-align: top;
+}
+.main-tab-number {
+    color: #777;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.margin-top-added {
+    margin-top: 10px;
+}
+.div-total-question {
+    font-size: 14px;
+    border-left: 1px solid #ccc;
+}
+.nav-tabs {
+    border-bottom: 1px solid #efefef;
+    color: black;
+}
+.nav-tabs .nav-link {
+    display: block!important;
+    padding: 0.5em 1em!important;
+    border: 1px solid transparent;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+        letter-spacing: 0.8px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #A2A9AE;
+}
+.bar-highlight .active {
+    border-top: 5px solid #66BB6A !important;
+    padding-top: 4px !important;
+    background-color: #fff !important;
+    color: #359FF4!important;
+    
+}
+.nav-tabs .nav-link:hover, .nav-pills .nav-link:hover {
+     color:#359FF4!important; 
+}
+.bar-highlight2 .active {
+    border-top: 5px solid #EC6E6E !important;
+    padding-top: 4px !important;
+    color: #359FF4!important;
+}
+.card
+{
+	display: block!important;
+}
+#section{
+	margin-top: 20px;
+}
+#topic
+{
+	margin-top: 20px;
+}
+#level{
+	margin-top: 20px;
+}
+select.form-control{
+	height: 39px!important;
+}
+#report1
+{
+	    padding: 10px;
+    color: #FFB175;
+    border-bottom: 1px solid #add8e6;
+}
+#report2
+{
+	    padding: 10px;
+    color: #69BDFF;
+    border-bottom: 1px solid #add8e6;
+}
+
+#report3
+{
+	    padding: 10px;
+    color: #FF9F98;
+    border-bottom: 1px solid #add8e6;
+
+}
+#report4{
+    padding: 10px;
+    color: #66BB6A;
+    border-bottom: 1px solid #add8e6;
+}

@@ -1,0 +1,24 @@
+.modal-dialog.modal-notify.modal-success .modal-header
+{
+	background-color: #6673FC;
+
+}
+.modal .modal-header .close
+{
+text-indent:0!important;
+}
+.white-text
+{
+	color: #fff;
+	position: absolute;
+   top: 20px;
+    right: 10px;
+
+}
+.modal-dialog.modal-notify .close {
+    opacity: 1;
+}
+.heading.lead
+{
+	color: white;
+}

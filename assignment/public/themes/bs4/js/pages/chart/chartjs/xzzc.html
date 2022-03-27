@@ -1,0 +1,191 @@
+{"Reasoning":{"correct":0,"incorrect":3,"skipped":3,"score":0,"max_marks":12,"rank":0,"center_rank":0,"time_spent":4100,"level":{"Hard":{"correct":0,"incorrect":0,"skipped":1},"Easy":{"correct":0,"incorrect":0,"skipped":1},"Medium":{"correct":0,"incorrect":0,"skipped":1}}}}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+     var ecid = "{{$details['user_marks']['enrolled_course_content_id']}}";
+
+    $(document).ready(function() {
+        
+        //section wise analytics event
+        $('#trigerclickevent1').on('click', function(){
+          
+          $('.sectionclass').each(function(){
+             
+            section_analytcs($(this).text());
+             return false;
+          });
+       });
+
+       //topic wise analytics event
+       $('#trigerclickevent2').on('click', function(){
+          
+          $('.topicclass').each(function(){
+              
+             topic_analytcs($(this).text());
+             return false;
+          });
+          
+       });
+
+        // level wise analytics event
+        $('#trigerclickevent3').on('click', function(){
+
+              $('.levelclass').each(function(){
+                 level_analytcs($(this).text());
+                 return false;
+              });
+
+        });
+
+
+        $('.leaderboard').on('click', function(){
+          
+          $('#myModal').modal('show');
+            $.ajax({
+      
+              url:'/lms/leaderboard',
+              type : 'GET',
+              data :{
+                  '_token' : "{{ csrf_token() }}",
+                  'ecid' : ecid,
+                  'user_id' : '{{$details['user_id']}}'
+              },
+              success : function(response){
+                 
+                $('#leadboard').html(response);
+
+              }
+              ,
+              complete : function(){
+                $('#myModal').modal('hide');
+              }
+
+           });
+          
+       });
+         });
+
+    
+    function section_analytcs(section){
+        
+      $('#myModal').modal('show');
+        
+        $.ajax({
+      
+              url:'/lms/sectionanalytic',
+              type : 'GET',
+              data :{
+                  '_token' : "{{ csrf_token() }}",
+                  'ecid' : ecid,
+                  'section' : section,
+                  'user_id' : '{{$details['user_id']}}'
+                  
+              },
+              success : function(response){
+                  
+                  var obj = JSON.parse(response);
+                  var level_wise = obj.level_data;
+                  var highest_score = obj.topper;
+
+                  $('#marks_scored').html(obj.score+ '/'+obj.max_marks);
+                  $('#tq').html((obj.correct + obj.incorrect + obj.skipped));
+                  $('#qc').html(obj.correct);
+                  $('#qa').html((obj.correct + obj.incorrect));
+                  $('#qs').html(obj.skipped);
+                  $('#acrcy').html(obj.accuracy);
+                  $('#shs').html(obj.topper_marks);
+                  $('#avgtt').html(obj.avg_marks);
+                  $('#percentage').html(obj.percentage);
+                  $('#perc').html(obj.percentile);
+                  $('#rank').html(obj.overall_rank);
+                  $('#center_rank').html(obj.center_rank);
+
+                  $('#sis').html(obj.ideal_score+' +');
+                  
+                  // overall_comparison('sub_ee', section, obj.correct, obj.incorrect, obj.skipped);
+                  // topper_comparision('{{$details['student_name']}}', obj.score, obj.topper_marks, obj.avg_marks, 'sub_itvc');
+                  
+
+              },
+              complete : function(){
+                $('#myModal').modal('hide');
+              }
+
+           });
+       
+    }
+
+
+     function level_analytcs(section){
+        
+      $('#myModal').modal('show');
+        
+        $.ajax({
+      
+              url:'/lms/levelanalytics',
+              type : 'GET',
+              data :{
+                  
+                  'ecid' : ecid,
+                  'section' : section,
+                  'user_id' : '{{$details['user_id']}}'
+                  
+              },
+              success : function(response){
+                 
+                  var obj = JSON.parse(response);
+                  var level_wise = obj.level_data;
+                  console.log(level_wise);
+                  
+                  $('#level_wise_piechart').html('<hr />');
+                  for(i in level_wise){
+                    
+                    $('#level_wise_piechart').append('<div class="col-md-4" style="height: 400px; margin: 0 auto" id="'+i+'"></div>');
+                    //overall_comparison(i, i, level_wise[i].correct, level_wise[i].incorrect, level_wise[i].skipped);
+
+                  }
+                  $('#level_statistics').html(obj.level_wise_data_table);
+
+               }
+              ,
+              complete : function(){
+                $('#myModal').modal('hide');
+              }
+
+           });
+       
+    }
+    
+    function topic_analytcs(section){
+        
+        $('#myModal').modal('show');
+        $.ajax({
+      
+              url:'/lms/topicanalytics',
+              type : 'GET',
+              data :{
+                  'ecid' : ecid,
+                  'section' : section,
+                  'user_id' : '{{$details['user_id']}}'
+              },
+              success : function(response){
+                 
+                var obj = JSON.parse(response); 
+                $('#topic_statistics').html(obj.topic_table);
+                  
+
+              }
+              ,
+              complete : function(){
+                $('#myModal').modal('hide');
+              }
+
+           });
+       
+    }
+    
+
+</script>
